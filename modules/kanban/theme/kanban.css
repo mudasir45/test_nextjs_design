@@ -1,0 +1,12 @@
+/**
+ * Optional Kanban module styles.
+ * Import in your app layout if you prefer explicit module tokens:
+ *   @import "@/modules/kanban/theme/kanban.css";
+ *
+ * By default, components use shadcn semantic classes (primary, muted, border).
+ */
+@layer base {
+  :root {
+    --kanban-scope-ring: color-mix(in oklab, var(--primary) 20%, transparent);
+  }
+}

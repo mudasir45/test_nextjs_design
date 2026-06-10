@@ -1,0 +1,21 @@
+{
+  "name": "@imergix/kanban",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable Kanban board module — copy or link via pnpm workspace",
+  "exports": {
+    ".": "./index.ts",
+    "./theme/kanban.css": "./theme/kanban.css"
+  },
+  "peerDependencies": {
+    "@radix-ui/react-avatar": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^1.0.0",
+    "next": ">=15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
