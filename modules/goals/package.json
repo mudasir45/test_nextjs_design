@@ -1,0 +1,19 @@
+{
+  "name": "@imergix/goals",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable Goals management module — copy or link via pnpm workspace",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "peerDependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^1.0.0",
+    "next": ">=15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

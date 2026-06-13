@@ -1,4 +1,9 @@
 import type { KanbanEntities } from '../core/types';
+import {
+  DEFAULT_GOALS,
+  goalsToKanbanEntities,
+  milestonesToKanbanEntities,
+} from '@/modules/goals/demo/default-goals';
 
 export const DEFAULT_ENTITIES: KanbanEntities = {
   projects: [
@@ -39,52 +44,8 @@ export const DEFAULT_ENTITIES: KanbanEntities = {
       color: '#64748b',
     },
   ],
-  goals: [
-    {
-      id: 'goal-q1-revenue',
-      label: 'Q1 Revenue Target',
-      subtitle: 'Professional · Quarterly',
-      color: '#2563eb',
-    },
-    {
-      id: 'goal-product-launch',
-      label: 'Product Launch',
-      subtitle: 'Professional · Quarterly',
-      color: '#7c3aed',
-    },
-    {
-      id: 'goal-design-system',
-      label: 'Design System Maturity',
-      subtitle: 'Professional · Monthly',
-      color: '#0891b2',
-    },
-  ],
-  milestones: [
-    {
-      id: 'ms-wireframes',
-      label: 'Wireframes approved',
-      goalId: 'goal-product-launch',
-      subtitle: 'Due Mar 15',
-    },
-    {
-      id: 'ms-beta',
-      label: 'Beta release',
-      goalId: 'goal-product-launch',
-      subtitle: 'Due Apr 30',
-    },
-    {
-      id: 'ms-audit',
-      label: 'Component audit complete',
-      goalId: 'goal-design-system',
-      subtitle: 'Due Jan 20',
-    },
-    {
-      id: 'ms-clients',
-      label: '5 new retainer clients',
-      goalId: 'goal-q1-revenue',
-      subtitle: 'Due Mar 31',
-    },
-  ],
+  goals: goalsToKanbanEntities(DEFAULT_GOALS),
+  milestones: milestonesToKanbanEntities(DEFAULT_GOALS),
 };
 
 export function getEntityLabel(

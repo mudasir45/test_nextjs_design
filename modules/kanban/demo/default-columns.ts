@@ -51,6 +51,18 @@ export const DEFAULT_COLUMNS: Column[] = [
         comments: 4,
         entityLink: { type: 'goal', id: 'goal-product-launch' },
       },
+      {
+        id: 'beta-1',
+        title: 'Onboard beta testers',
+        priority: 'high',
+        entityLink: { type: 'milestone', id: 'ms-beta' },
+      },
+      {
+        id: 'beta-2',
+        title: 'Fix critical beta bugs',
+        priority: 'high',
+        entityLink: { type: 'milestone', id: 'ms-beta' },
+      },
     ],
   },
   {
@@ -104,6 +116,12 @@ export const DEFAULT_COLUMNS: Column[] = [
     title: 'Done',
     color: '#64748b',
     tasks: [
+      {
+        id: 'beta-3',
+        title: 'Beta feedback synthesis',
+        priority: 'medium',
+        entityLink: { type: 'milestone', id: 'ms-beta' },
+      },
       {
         id: '5',
         title: 'Landing Page Optimization',
