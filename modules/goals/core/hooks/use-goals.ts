@@ -1,13 +1,13 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { generateId } from '../adapters';
+import type { GoalsStorageAdapter } from '../adapters/types';
+import { getTodayCheckIn } from '../check-in-utils';
 import {
   countMilestoneTaskStats,
   persistMilestoneTaskDrafts,
 } from '../kanban-task-bridge';
-import { getTodayCheckIn } from '../check-in-utils';
-import { generateId } from '../adapters';
-import type { GoalsStorageAdapter } from '../adapters/types';
 import {
   defaultMilestoneFields,
   normalizeGoal,

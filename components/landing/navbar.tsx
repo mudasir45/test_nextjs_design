@@ -6,6 +6,12 @@ const navLinks = [
   { href: "#pricing", label: "Pricing" },
 ];
 
+const appLinks = [
+  { href: "/goals", label: "Goals" },
+  { href: "/kanban", label: "Kanban" },
+  { href: "/invoices", label: "Invoices" },
+];
+
 export function Navbar() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl">
@@ -25,6 +31,16 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="cursor-pointer text-sm font-medium text-secondary transition-colors duration-200 hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+          <span className="h-4 w-px bg-border" aria-hidden="true" />
+          {appLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}

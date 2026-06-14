@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  applyMilestoneTaskDraft as applyTaskDraftToColumns,
+  countMilestoneTaskStats,
+} from '@/modules/goals/core/kanban-task-bridge';
+import type { Goal, MilestoneDraft } from '@/modules/goals/core/types';
+import {
+  goalsToKanbanEntities,
+  milestonesToKanbanEntities,
+} from '@/modules/goals/demo/default-goals';
 import {
   createDefaultLocalStorageAdapter,
   DEFAULT_COLUMNS,
@@ -10,16 +18,7 @@ import {
 import { getTaskEntityLink } from '@/modules/kanban/core/entity-utils';
 import type { Column, KanbanEntities, Task, TaskEntityLink } from '@/modules/kanban/core/types';
 import { DEFAULT_ENTITIES } from '@/modules/kanban/demo/default-entities';
-import type { Goal } from '@/modules/goals/core/types';
-import {
-  applyMilestoneTaskDraft as applyTaskDraftToColumns,
-  countMilestoneTaskStats,
-} from '@/modules/goals/core/kanban-task-bridge';
-import type { MilestoneDraft } from '@/modules/goals/core/types';
-import {
-  goalsToKanbanEntities,
-  milestonesToKanbanEntities,
-} from '@/modules/goals/demo/default-goals';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const DONE_COLUMN_ID = 'done';
 const TODO_COLUMN_ID = 'todo';
@@ -159,10 +158,10 @@ export function useKanbanBridge(goals: Goal[]) {
           tasks: col.tasks.map((t) =>
             t.id === taskId
               ? {
-                  ...t,
-                  entityLink: { type: 'milestone', id: milestoneId },
-                  updatedAt: new Date().toISOString(),
-                }
+                ...t,
+                entityLink: { type: 'milestone', id: milestoneId },
+                updatedAt: new Date().toISOString(),
+              }
               : t,
           ),
         })),
@@ -179,10 +178,10 @@ export function useKanbanBridge(goals: Goal[]) {
           tasks: col.tasks.map((t) =>
             t.id === taskId
               ? {
-                  ...t,
-                  entityLink: { type: 'goal', id: goalId },
-                  updatedAt: new Date().toISOString(),
-                }
+                ...t,
+                entityLink: { type: 'goal', id: goalId },
+                updatedAt: new Date().toISOString(),
+              }
               : t,
           ),
         })),
@@ -197,11 +196,11 @@ export function useKanbanBridge(goals: Goal[]) {
         prev.map((col) =>
           col.id === columnId
             ? {
-                ...col,
-                tasks: col.tasks.map((t) =>
-                  t.id === taskId ? { ...t, ...updates, updatedAt: new Date().toISOString() } : t,
-                ),
-              }
+              ...col,
+              tasks: col.tasks.map((t) =>
+                t.id === taskId ? { ...t, ...updates, updatedAt: new Date().toISOString() } : t,
+              ),
+            }
             : col,
         ),
       );
