@@ -1,9 +1,9 @@
-import type { KanbanEntities } from '../core/types';
 import {
   DEFAULT_GOALS,
   goalsToKanbanEntities,
   milestonesToKanbanEntities,
 } from '@/modules/goals/demo/default-goals';
+import type { KanbanEntities } from '../core/types';
 
 export const DEFAULT_ENTITIES: KanbanEntities = {
   projects: [

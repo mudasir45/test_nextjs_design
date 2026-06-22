@@ -1,79 +1,121 @@
-import {
-  FileSpreadsheet,
-  FileText,
-  LayoutList,
-  Receipt,
-  StickyNote,
-  Users,
-} from "lucide-react";
+"use client";
+
+import { Brain, Layers, AlertCircle, X, Check } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 const painPoints = [
   {
-    icon: StickyNote,
-    tool: "Tasks & notes",
-    problem: "Scattered across Notion, sticky notes, or random Google Docs",
+    icon: Brain,
+    title: "Attention residue",
+    description:
+      "Switching between Notion, Trello, and spreadsheets forces your brain to reload context every time — stealing deep focus.",
   },
   {
-    icon: LayoutList,
-    tool: "Projects",
-    problem: "Trello, Linear, or yet another spreadsheet nobody updates",
+    icon: Layers,
+    title: "Motivation gap",
+    description:
+      "When yearly goals live in a doc you never open, daily tasks feel like empty chores with no visible progress story.",
   },
   {
-    icon: Receipt,
-    tool: "Invoices",
-    problem: "Manual PDFs, Wave, or a Google Sheet you dread opening",
-  },
-  {
-    icon: FileText,
-    tool: "Goals",
-    problem: "Another doc you wrote once and never re-opened",
-  },
-  {
-    icon: FileSpreadsheet,
-    tool: "Finances",
-    problem: "QuickBooks, spreadsheets, or pure guesswork",
-  },
-  {
-    icon: Users,
-    tool: "Clients",
-    problem: "Contacts app or digging through Gmail every time",
+    icon: AlertCircle,
+    title: "Operational anxiety",
+    description:
+      "Without one source of truth, you're always wondering: am I on track? Did I invoice that client? What's my revenue?",
   },
 ];
 
+const fragmentedTools = ["Notion", "Trello", "Sheets", "Gmail", "Wave"];
+
 export function Problem() {
   return (
-    <section className="border-y border-border bg-card py-20 md:py-28">
+    <section id="philosophy" className="relative py-24 md:py-32 bg-background border-t border-border/40">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-cta">
-            The problem
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Sound familiar?
-          </h2>
-          <p className="mt-4 text-lg text-secondary">
-            Most freelancers run on 4–6 disconnected tools with zero shared
-            context. There&apos;s no unified view of &ldquo;am I on
-            track?&rdquo; — and motivation suffers because progress is
-            invisible.
-          </p>
+        <SectionHeader
+          label="The problem"
+          title={
+            <>
+              Scattered tools create a{" "}
+              <span className="text-muted-foreground font-normal">scattered mind.</span>
+            </>
+          }
+          description="Most freelancers run on 4–6 disconnected apps. It's not just messy — it's a constant drain on focus, motivation, and creative energy."
+        />
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {painPoints.map((point) => {
+            const Icon = point.icon;
+            return (
+              <div
+                key={point.title}
+                className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-foreground/40 hover:shadow-sm"
+              >
+                <div
+                  className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-foreground/5 text-foreground"
+                >
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-bold text-foreground">
+                  {point.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {point.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {painPoints.map((item) => (
-            <div
-              key={item.tool}
-              className="rounded-xl border border-border bg-background p-5 transition-colors duration-200 hover:bg-card-hover"
-            >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent-soft">
-                <item.icon className="h-5 w-5 text-cta" aria-hidden="true" />
+        {/* Before / After */}
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="mb-4 flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/5 text-foreground">
+                <X className="h-4 w-4" />
               </div>
-              <h3 className="font-semibold text-foreground">{item.tool}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-secondary">
-                {item.problem}
-              </p>
+              <span className="text-sm font-bold text-foreground">
+                Before — 6 disconnected tools
+              </span>
             </div>
-          ))}
+            <div className="flex flex-wrap gap-2">
+              {fragmentedTools.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold text-muted-foreground"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+              Broken context · Constant switching · No progress story
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="mb-4 flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/5 text-foreground">
+                <Check className="h-4 w-4" />
+              </div>
+              <span className="text-sm font-bold text-foreground">
+                After — One iMergix workspace
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {["Goals", "Tasks", "Projects", "Clients", "Invoices"].map(
+                (mod) => (
+                  <span
+                    key={mod}
+                    className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-semibold text-foreground"
+                  >
+                    {mod}
+                  </span>
+                ),
+              )}
+            </div>
+            <p className="mt-4 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+              Shared context · Visible progress · Calm productivity
+            </p>
+          </div>
         </div>
       </div>
     </section>

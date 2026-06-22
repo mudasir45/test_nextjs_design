@@ -1,4 +1,7 @@
+"use client";
+
 import { Check } from "lucide-react";
+import { SectionHeader } from "./section-header";
 
 const plans = [
   {
@@ -52,67 +55,69 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 md:py-28">
+    <section id="pricing" className="relative border-t border-border/40 bg-background py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-cta">
-            Pricing
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Simple, accessible plans
-          </h2>
-          <p className="mt-4 text-lg text-secondary">
-            Pricing is being finalized — these are our recommended starting
-            points. Significantly below competitors.
-          </p>
-        </div>
+        <SectionHeader
+          label="Pricing"
+          title={
+            <>
+              Simple plans.{" "}
+              <span className="text-muted-foreground font-normal">Honest pricing.</span>
+            </>
+          }
+          description="Significantly below competitors. Free tier includes all core modules."
+        />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col rounded-xl border p-6 transition-colors duration-200 ${
+              className={`relative flex flex-col rounded-2xl border p-6 transition-all duration-300 md:p-8 ${
                 plan.highlighted
-                  ? "border-cta bg-card shadow-lg"
-                  : "border-border bg-card hover:bg-card-hover"
+                  ? "border-foreground bg-card shadow-md"
+                  : "border-border bg-card hover:border-foreground/40 hover:shadow-sm"
               }`}
             >
               {plan.highlighted && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cta px-3 py-0.5 text-xs font-semibold text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-foreground text-background px-3 py-0.5 text-[10px] font-bold uppercase tracking-wide">
                   Most popular
                 </span>
               )}
 
               <div>
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-lg font-bold text-foreground">
                   {plan.name}
                 </h3>
-                <p className="mt-1 text-sm text-secondary">{plan.description}</p>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-foreground">
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {plan.description}
+                </p>
+                <div className="mt-5 flex items-baseline gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-foreground">
                     {plan.price}
                   </span>
-                  <span className="text-secondary">{plan.period}</span>
+                  <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">
+                    {plan.period}
+                  </span>
                 </div>
               </div>
 
-              <ul className="mt-6 flex-1 space-y-3">
+              <ul className="mt-6 flex-1 space-y-3.5">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-sm">
                     <Check
-                      className="mt-0.5 h-4 w-4 shrink-0 text-cta"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-foreground"
                       aria-hidden="true"
                     />
-                    <span className="text-secondary">{feature}</span>
+                    <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <a
                 href="#cta"
-                className={`mt-8 block cursor-pointer rounded-lg py-3 text-center text-sm font-semibold transition-colors duration-200 ${
+                className={`mt-8 block cursor-pointer rounded-xl py-3 text-center text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
                   plan.highlighted
-                    ? "bg-cta text-white hover:bg-cta-hover"
+                    ? "bg-foreground text-background shadow-sm hover:bg-foreground/90"
                     : "border border-border text-foreground hover:bg-card-hover"
                 }`}
               >

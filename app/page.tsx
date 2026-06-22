@@ -6,6 +6,7 @@ import { Hero } from "@/components/landing/hero";
 import { Navbar } from "@/components/landing/navbar";
 import { Pricing } from "@/components/landing/pricing";
 import { Problem } from "@/components/landing/problem";
+import { VisualJourney } from "@/components/landing/visual-journey";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <VisualJourney />
         <Problem />
         <Features />
         <Differentiators />
