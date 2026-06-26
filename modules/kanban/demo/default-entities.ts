@@ -3,15 +3,14 @@ import {
   goalsToKanbanEntities,
   milestonesToKanbanEntities,
 } from '@/modules/goals/demo/default-goals';
+import {
+  DEFAULT_PROJECTS,
+  projectsToKanbanEntities,
+} from '@/modules/projects/demo/default-projects';
 import type { KanbanEntities } from '../core/types';
 
 export const DEFAULT_ENTITIES: KanbanEntities = {
-  projects: [
-    { id: 'proj-brand', label: 'Brand Refresh', color: '#6366f1', subtitle: 'Active' },
-    { id: 'proj-mobile', label: 'Mobile App', color: '#22c55e', subtitle: 'Active' },
-    { id: 'proj-api', label: 'API Platform', color: '#f97316', subtitle: 'On Hold' },
-    { id: 'proj-marketing', label: 'Marketing Site', color: '#ec4899', subtitle: 'Active' },
-  ],
+  projects: projectsToKanbanEntities(DEFAULT_PROJECTS),
   assignees: [
     {
       id: 'user-sarah',
